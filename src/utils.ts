@@ -5,9 +5,9 @@ export class Storage {
         localStorage.setItem(name, JSON.stringify(data));
     }
     static getItem(key: string) {
-        // if (!key || typeof window === 'undefined') {
-        //     return '';
-        // }
+        if (!key || typeof window === 'undefined') {
+            return '';
+        }
         return JSON.parse(localStorage.getItem(key) || '""');
     }
     static removeItem(name: string) {
