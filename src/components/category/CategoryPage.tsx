@@ -40,8 +40,11 @@ const CategoryPage = () => {
     if ((minutes < 0) || (step > questions.length)) {
       setPage(3)
       Storage.setItem("page", 3)
+      if (minutes === 0 && seconds === 0) {
+        Storage.setItem("questionWithResponse", JSON.parse(JSON.stringify(questions)))
+      }
     }
-  }, [step, minutes])
+  }, [step, minutes, seconds])
 
   useEffect(() => {
     const timer = setInterval(() => {
