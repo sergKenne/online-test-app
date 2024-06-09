@@ -15,7 +15,7 @@ export type CategoriesType = {
     };
 };
 
-type dataType = {
+type DataType = {
     categories: CategoriesType
 };
 
