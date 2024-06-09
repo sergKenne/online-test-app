@@ -10,7 +10,7 @@ const ResultPage = () => {
   const { questionWithResponse, setPage, setStep, setCategory } = useAppContext() 
   let nb_minutes = Storage.getItem("minutes") 
   let nb_seconds = Storage.getItem("seconds") 
-  if (nb_minutes == 0 && nb_seconds == 0) {
+  if (nb_minutes == 0 && nb_seconds < 0) {
     nb_minutes = questionWithResponse.length-1
     nb_seconds = 59
   } else {
