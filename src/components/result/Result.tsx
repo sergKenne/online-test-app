@@ -7,14 +7,15 @@ import { Question } from '../../types';
 import { useAppContext } from '../../context/AppContext';
 
 const ResultPage = () => {
-  const { questionWithResponse, setPage, setStep, setCategory } = useAppContext() 
-  let nb_minutes, nb_seconds;
-  if (Storage.getItem("minutes") == 0 && Storage.getItem("seconds") == 0) {
-    nb_minutes = questionWithResponse.length
-    nb_seconds = 0
+  const { questionWithResponse, setPage, setStep, setCategory, minutes, seconds } = useAppContext() 
+  let nb_minutes = Storage.getItem("minutes") || minutes
+  let nb_seconds = Storage.getItem("seconds") || seconds
+  if (nb_minutes == 0 && nb_seconds == 0) {
+    nb_minutes = questionWithResponse.length-1
+    nb_seconds = 59
   } else {
-    nb_minutes = (questionWithResponse.length - Storage.getItem("minutes")) - 1
-    nb_seconds = 60 - Storage.getItem("seconds")
+    nb_minutes = (questionWithResponse.length - nb_minutes) - 1
+    nb_seconds = 60 - nb_seconds
   }
 
   const passTestAgain = () => {

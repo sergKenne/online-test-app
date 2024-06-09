@@ -6,11 +6,11 @@ import data, { CategoriesType } from '../../data';
 import { useAppContext } from '../../context/AppContext';
 
 const CategoryPage = () => {
-  const {category, setPage, step, setStep, setQuestionWithResponse, questionWithResponse } = useAppContext() 
+  const {minutes, setMinutes, seconds, setSeconds, category, setPage, step, setStep, setQuestionWithResponse, questionWithResponse } = useAppContext() 
   const questions: QuestionsType = data.categories[category as keyof CategoriesType].questions 
   const [isCheck, setIsCheck] = useState<boolean>(false)
-  const [minutes, setMinutes] = useState<number>(Storage.getItem("minutes") || questions.length-1);
-  const [seconds, setSeconds] = useState<number>(Storage.getItem("seconds") || 59);
+  // const [minutes, setMinutes] = useState<number>(Storage.getItem("minutes") || questions.length-1);
+  // const [seconds, setSeconds] = useState<number>(Storage.getItem("seconds") || 59);
   
   const numberStep = (100 / questions.length).toFixed(3);
   const { id, name, lists } =  (step > questions.length) ? questions[questions.length - 1] : questions[step - 1]
@@ -41,7 +41,13 @@ const CategoryPage = () => {
       setPage(3)
       Storage.setItem("page", 3)
     }
-  }, [step, minutes])
+    // if (minutes === 0 && seconds < 0) {
+    //   setMinutes(questionWithResponse.length - 1)
+    //   setSeconds(59)
+    //   Storage.setItem("minutes", minutes)
+    //   Storage.setItem("seconds", seconds - 1)
+    // }
+  }, [step, minutes, seconds])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -49,19 +55,20 @@ const CategoryPage = () => {
       if (seconds === 0) {
         setSeconds(59);
         setMinutes((prev:number) => prev - 1) 
-        console.log("minutes:", minutes)
       }
       Storage.setItem("minutes", minutes)
-      Storage.setItem("seconds", seconds -1)
+      Storage.setItem("seconds", seconds )
     }, 1000)
     
     return () => {
       clearInterval(timer)
     }
-  }, [seconds])
+  }, [seconds, minutes])
 
   useEffect(() => {
     setQuestionWithResponse(Storage.getItem("questionWithResponse") || JSON.parse(JSON.stringify(questions))) 
+    setMinutes(Storage.getItem("minutes") || questions.length - 1-3)
+    setSeconds(Storage.getItem("seconds") || 59)
   }, [])
 
   return (

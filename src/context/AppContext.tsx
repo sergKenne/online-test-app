@@ -6,6 +6,10 @@ type AppContextType = {
   step: number;
   page: number;
   category: string;
+  minutes: number;
+  seconds: number;
+  setMinutes: React.Dispatch<React.SetStateAction<number>>;
+  setSeconds: React.Dispatch<React.SetStateAction<number>>;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
   setPage: React.Dispatch<React.SetStateAction<number>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -20,7 +24,8 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [step, setStep] = useState<number>(Storage.getItem("step") || 1)
   const [category, setCategory] = useState<string>(Storage.getItem("category") || "")
   const [questionWithResponse, setQuestionWithResponse] = useState<QuestionsType>(Storage.getItem("questionWithResponse") || [])
-
+  const [minutes, setMinutes] = useState<number>(1);
+  const [seconds, setSeconds] = useState<number>(59);
   const value = {
     questionWithResponse,
     setQuestionWithResponse,
@@ -29,7 +34,12 @@ const AppContextProvider = ({ children }: { children: React.ReactNode }) => {
     page,
     setPage,
     category,
-    setCategory
+    setCategory,
+    minutes,
+    setMinutes,
+    seconds,
+    setSeconds
+
   }
   
   return (
