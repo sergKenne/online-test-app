@@ -19,7 +19,7 @@ type DataType = {
     categories: CategoriesType
 };
 
-const data: dataType = {
+const data: DataType = {
     categories: {
         'frontend': {
             name: 'Frontend-разработчик',
