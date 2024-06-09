@@ -1,0 +1,28 @@
+
+.categories {
+  background-color: #ffffff;
+  &__title {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 28px;
+  }
+  &__list {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+  &__list-item {
+    cursor: pointer;
+  }
+  &__list-img {
+    border-radius: 20px;
+  }
+  &__name {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}

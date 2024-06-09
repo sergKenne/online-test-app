@@ -1,0 +1,130 @@
+.category {
+  margin-top: 120px;
+  @media (max-width: 550px) {
+    margin-top: 40px;
+  }
+  &__test-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  &__test-timer {
+    width: 100px;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    border: 2px solid #6d6969;
+    font-size: 20px;
+    font-weight: 500;
+    color: #554e4e;
+    border-radius: 4px;
+  }
+  &__progress-bar {
+    display: flex;
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  &__progress-item {
+    height: 7px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  &__progress-step {
+    background: #d6cccc;
+    height: inherit;
+    width: 100%;
+    &.active {
+      background-color: rgb(212, 37, 37);
+    }
+    &.pass {
+      background-color: #1b1a1a;
+    }
+  }
+  &__question {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    @media (max-width: 550px) {
+      font-size: 18px;
+      line-height: 1.3;
+    }
+  }
+  &__list {
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  &__list-item {
+    margin-bottom: 15px;
+  }
+  &__list-label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  &__list-input {
+    display: none;
+    &:checked ~ .category__list-box {
+      background-color: rgb(212, 37, 37);
+      border-color: rgb(212, 37, 37);
+    }
+  }
+  &__list-box {
+    height: 18px;
+    width: 18px;
+    flex: 0 0 18px;
+    border: 3px solid #000;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  &__list-text {
+    cursor: pointer;
+    color: #6d6969;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    @media (max-width: 550px) {
+      font-size: 16px;
+    }
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__btn {
+    background-color: rgb(212, 37, 37);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all .3s linear;
+    &--back {
+      text-decoration: none;
+      background-color: #6d6969;
+      margin-bottom: 100px;
+      display: inline-block;
+      font-weight: 500;
+      font-size: 20px;
+      &:hover {
+        background-color: #8b8787!important;
+      }
+    }
+    &--result {
+      background-color: blue;
+      text-decoration: none;
+      &:hover {
+        background-color: rgb(66, 66, 214)!important;
+      }
+    }
+    &:hover {
+      background-color: rgb(215, 62, 62);
+    }
+  }
+}
